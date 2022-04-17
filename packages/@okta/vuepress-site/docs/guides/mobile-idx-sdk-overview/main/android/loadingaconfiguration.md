@@ -27,7 +27,7 @@ defaultConfig {
 }
 ```
 
-Create an `OktaIdxClientConfigurationProvider` class that return an `IdxClientConfiguration` from the `BuildConfig`.
+Create an `OktaIdxClientConfigurationProvider` class that returns an `IdxClientConfiguration` from the `BuildConfig`.
 
 ```kotlin
 import com.okta.android.samples.authenticator.BuildConfig
@@ -35,7 +35,7 @@ import com.okta.idx.kotlin.client.IdxClientConfiguration
 import okhttp3.HttpUrl.Companion.toHttpUrl
 
 /**
- * Returns an Okta org configuration from the build configuraiton.
+ * Return an Okta org configuration from the build configuration.
  */
 internal object OktaIdxClientConfigurationProvider {
     fun get(): IdxClientConfiguration {

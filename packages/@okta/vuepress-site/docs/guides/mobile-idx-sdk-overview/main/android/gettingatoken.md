@@ -1,6 +1,6 @@
 ```kotlin
 private suspend fun handleResponse(response: IdxResponse) {
-    // Check if sign-in is successful.
+    // Check if the sign-in flow is successful.
     if (response.isLoginSuccessful) {
         // Exchange the sign-in session token for a connection token.
         when (val exchangeCodesResult = client?.exchangeInteractionCodeForTokens(response.remediations[ISSUE]!!)) {

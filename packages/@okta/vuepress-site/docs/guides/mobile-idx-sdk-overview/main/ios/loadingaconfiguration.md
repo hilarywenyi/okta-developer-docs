@@ -1,11 +1,11 @@
 Initialize a configuration by passing the appropriate values to
-`IDXClient.Configuration(issuer:clientId:clientSecret:scopes:redirectUri:)`.  You can set
+`IDXClient.Configuration(issuer:clientId:clientSecret:scopes:redirectUri:)`. You can set
 the values directly in your code or load them from a file. This example shows loading the
 values from a property file in your project.
 
 First, create a property list file, such as `Okta.plist`. Next, add key-value pairs with
 the configuration settings for your Application Integration. In the file below, substitue
-your issuer URL for `{yourIssuerUrl}`, the client ID of your Application integration for
+your issuer URL for `{yourIssuerUrl}`, the client ID of your Application Integration for
 `{yourClientId}`, and a URI that launches your app. Set the scopes based on the access
 required by your app.
 
