@@ -45,34 +45,30 @@ Each sign-in step may include one or more possible user actions, such as:
 
 ## Sign-in objects
 
-Each step in the flow is represented by a _Response_ which contains the information used
-for creating the UI and general state information. The response is also used to cancel the
-sign-in flow, or retrieve an access token after the sign-in flow succeeds.
-
-The UI information is divided between two objects in the response: authenticators and
-remediations. An _Authenticator_ represents a type, or factor for verifying the identity
-of a user, such as a username and password, or Okta Verify. A _Method_ represents a
-channel for an authenticator, such as using email or SMS for an OTP. An authenticator may
-have multiple methods. A _Remediation_ represents a user action and usually contains most
-of the information for a step. Each response may contain multiple remediations and
-authenticators.
-
-Some common types of user action are represented by a _Capability_. These include
-requesting a new OTP or a password reset request. Remediations, authenticators, and
-methods may contain capabilities.
-
-A _Form_ inside the remediation represents the user action in a collection of _Field_
-objects. Most fields represent something that's displayed in the UI, either a static
-element, such as a label, or a user input, such as a selection list. The field also
-contains state information, such as whether the associated value is required. Options, or
-lists of choices, are represented by a collection of fields. A field may also contain a
-form that contains more fields.
+Each step in the sign-in flow is represented by a number of different SDK objects:
 
 <div class="common-image-format">
 
 ![A diagram showing the SDK objects and their relationships.](/img/mobile-sdk/mobile-idx-objects.png "A diagram that shows the SDK objects for the sign in flow and the relationships between them.")
 
 </div>
+
+- **Response:** The top-level object that contains all of the information for the step.
+It's also used to send messages for cancelling the sign-in flow, or retrieve an access
+token after the sign-in flow succeeds. A response may contain multiple authenticators and
+remediations.
+- **Authenticator:** Represents a type, or factor for verifying the identity
+of a user, such as a username and password.
+- **Method:** Represents a channel for an authenticator, such as using email or SMS for an
+OTP. An authenticator may have multiple methods.
+- **Remediation:** Represents a user action and usually contains most of the information
+for a step.
+- **Capability:** A user action, that's associated with a remediation, authenticator, or method, such as requesting a new OTP or a password reset.
+- **Field:** Represents an item displayed in the UI, either a static element, such as a
+label, or a user input, such as a selection list. It also contains state information, such
+as whether the associated value is required. Options, or lists of choices, are represented
+by a collection of fields. A field may also contain a form that contains more fields.\
+- **Form:** Contains the fields that represent the user action for a remediation.
 
 ## Common parts of the flow
 
@@ -145,9 +141,7 @@ There are two general approaches for adding the sign-in flow to your app: add a 
 number of authentication methods, possibly in a fixed order, or generate the user
 interface dynamically based on the response at each step.
 
-For a fixed number of methods, you create appropriate views and populate them from the
-response. Using fixed methods does introduce risk as authentication methods may be added
-or removed by the Okta administrator. There are three requirements to reduce that risk:
+For a fixed number of methods (a static UI), you create appropriate views and populate them from the response. Using a static UI introduces risk as both the authentication methods and the order may be changed at any time by an administrator of your Okta org. There are three requirements to reduce that risk:
 
 - Update the code in the app before policy changes are enabled.
 - The updated app can be distributed to users before the policy changes are enabled.
