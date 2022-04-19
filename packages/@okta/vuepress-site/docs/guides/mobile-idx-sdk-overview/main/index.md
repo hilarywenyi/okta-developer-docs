@@ -39,7 +39,7 @@ is signed in, cancels, or an error occurs.
 </div>
 
 Each sign-in step may include one or more possible user actions, such as:
-- Choosing an authenticator, such as Okta Verify or WebAuthN.
+- Choosing an authenticator, such as Okta Verify or security questions.
 - Entering a One-Time Passcode (OTP).
 - Cancelling the sign-in flow.
 
@@ -67,7 +67,7 @@ for a step.
 - **Field:** Represents an item displayed in the UI, either a static element, such as a
 label, or a user input, such as a selection list. It also contains state information, such
 as whether the associated value is required. Options, or lists of choices, are represented
-by a collection of fields. A field may also contain a form that contains more fields.\
+by a collection of fields. A field may also contain a form that contains more fields.
 - **Form:** Contains the fields that represent the user action for a remediation.
 
 ## Common parts of the flow
@@ -93,7 +93,6 @@ A _Configuration_ contains the settings used by the SDK to connect to an Okta Ap
 | :------------ | :---------- |
 | Issuer        | The Oauth 2.0 URL for the Okta org, such as `https://oie-123456.oktapreview.com/oauth2/default`. |
 | Client ID     | The ID of the Okta Application Integration from the Okta Admin Console.  |
-| Client secret | An optional shared secret for accessing the Application Integration. |
 | Redirect URI  | A callback URI for launching the mobile app, such as `com.example.oie-123456:/callback`. |
 | Scopes        | A space separated list of the requested access scopes for the app. |
 
@@ -124,7 +123,7 @@ After the user enters the required information, update the remediation and reque
 
 ### Complete the sign in flow
 
-Check the response for the user successfully signing in flow at each step of the flow. When the user is signed in, exchange the session token for an access token, and then exit the flow.
+Check the response for the user successfully signing in flow at each step of the flow. When the user is signed in, exchange the remediation for an access token, and then exit the flow.
 
 <StackSnippet snippet="gettingatoken" />
 

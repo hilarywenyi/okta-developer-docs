@@ -18,8 +18,6 @@ required by your app.
     <string>{yourIssuerUrl}</string>
     <key>clientId</key>
     <string>{yourClientId}</string>
-    <key>clientSecret</key>
-    <string>{optionaClientSecret}</string>
     <key>redirectUri</key>
     <string>com.sample.:/callback</string>
     <key>scopes</key>
@@ -48,12 +46,6 @@ struct OktaPlistContent: Codable {
             scopes.components(separatedBy: " ")
         }
     }
-
-    var secret: String? {
-        get {
-            clientSecret.count == 0 ? nil : clientSecret
-        }
-    }
 }
 
 // Read the contents of the plist and return a configuration.
@@ -64,9 +56,10 @@ func loadConfiguration() -> IDXClient.Configuration? {
           let configuration = try? decoder.decode(OktaPlistContent.self, from: data)
     else { return nil }
 
+    // NOTE: The client secret is not used on mobile.
     return IDXClient.Configuration(issuer: configuration.issuer,
                                     clientId: configuration.clientId,
-                                    clientSecret: configuration.secret,
+                                    clientSecret: nil,
                                     scopes: configuration.scopeArray,
                                     redirectUri: configuration.redirectUri)
 }
