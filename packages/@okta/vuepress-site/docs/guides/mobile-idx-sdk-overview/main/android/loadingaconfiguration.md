@@ -1,7 +1,5 @@
 
-Create a configuration by calling `IdxClientConfiguration`. You can set the values
-directly in your code or load them from a file. This code shows loading the values from a
-property file in your project.
+Create a configuration by calling `IdxClientConfiguration`. You can set the values directly in your code or load them from a file. This code shows loading the values from a property file in your project.
 
 First, create a property file, for example, `okta.properties` in the project root. Add the values for your Okta Application Integration to the file.
 

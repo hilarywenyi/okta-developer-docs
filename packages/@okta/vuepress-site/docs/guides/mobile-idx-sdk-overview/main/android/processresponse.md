@@ -38,7 +38,7 @@ private fun proceed(remediation: IdxRemediation) {
     viewModelScope.launch {
         when (val resumeResult = client?.proceed(remediation)) {
             is IdxClientResult.Error -> {
-                // Handle error.
+                // Handle the error.
             }
             is IdxClientResult.Success -> {
                 handleResponse(resumeResult.result)

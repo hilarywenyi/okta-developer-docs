@@ -1,13 +1,6 @@
-Initialize a configuration by passing the appropriate values to
-`IDXClient.Configuration(issuer:clientId:clientSecret:scopes:redirectUri:)`. You can set
-the values directly in your code or load them from a file. This example shows loading the
-values from a property file in your project.
+Initialize a configuration by passing the appropriate values to `IDXClient.Configuration(issuer:clientId:clientSecret:scopes:redirectUri:)`. You can set the values directly in your code or load them from a file. This example shows loading the values from a property file in your project.
 
-First, create a property list file, such as `Okta.plist`. Next, add key-value pairs with
-the configuration settings for your Application Integration. In the file below, substitue
-your issuer URL for `{yourIssuerUrl}`, the client ID of your Application Integration for
-`{yourClientId}`, and a URI that launches your app. Set the scopes based on the access
-required by your app.
+First, create a property list file, such as `Okta.plist`. Next, add key-value pairs with the configuration settings for your Application Integration. For example, in the following text version of a `plist`, substitute your issuer URL for `{yourIssuerUrl}`, the client ID of your Application Integration for `{yourClientId}`, and a URI that launches your app. Set the scopes based on the access required by your app.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -26,7 +19,7 @@ required by your app.
 </plist>
 ```
 
-Next, add code to create an `IDXClient.Configuration` instance from the property list file. This example uses a decoder to read the values into an `OktaPlistContent` `struct`.
+Next, add code to create an `IDXClient.Configuration` instance from the property list file. This example uses a decoder to read the values into an `OktaPlistContent` structure.
 
 ```swift
 import OktaIdx
@@ -56,7 +49,7 @@ func loadConfiguration() -> IDXClient.Configuration? {
           let configuration = try? decoder.decode(OktaPlistContent.self, from: data)
     else { return nil }
 
-    // NOTE: The client secret is not used on mobile.
+    // NOTE: The client secret isn't used on mobile.
     return IDXClient.Configuration(issuer: configuration.issuer,
                                     clientId: configuration.clientId,
                                     clientSecret: nil,

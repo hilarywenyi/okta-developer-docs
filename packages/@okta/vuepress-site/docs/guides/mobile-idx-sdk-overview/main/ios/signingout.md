@@ -17,11 +17,11 @@ class TokenManager {
         static let storedTokenKey = "com.example.okta-samplecode.Okta-Login.storedToken"
     }
 
-    // Save the token to user defaults
+    // Save the token to user defaults.
     func saveToken(_ token: Token) {
         let defaults = UserDefaults.standard
 
-        // Convert the token to a format that you can save in user defaults
+        // Convert the token to a format that you can save in user defaults.
         guard let tokenData = try? JSONEncoder().encode(token) else {
             // Handle the error.
             return
@@ -82,7 +82,7 @@ Revoke a token by calling `Token.revoke(type:completion:)` (`type` is optional):
 if let token = TokenManager.shared.readToken() {
     token.revoke() { (success, error) in
         guard success else {
-            // Handle the error
+            // Handle the error.
             return
         }
         // The token is revoked.

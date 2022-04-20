@@ -5,15 +5,15 @@ private suspend fun handleResponse(response: IdxResponse) {
         // Exchange the sign-in session token for a connection token.
         when (val exchangeCodesResult = client?.exchangeInteractionCodeForTokens(response.remediations[ISSUE]!!)) {
             is IdxClientResult.Error -> {
-                // Handle error.
+                // Handle the error.
             }
             is IdxClientResult.Success -> {
-                // Handle success.
+                // Handle a successful sign-in flow.
                 // The token is in `exchangeCodesResult.result`.
                 // Store it securely for future use.
             }
             else -> {
-                // Handle error.
+                // Handle the error.
             }
         }
         return

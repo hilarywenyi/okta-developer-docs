@@ -13,9 +13,9 @@ fun logout() {
                 revokeToken("access_token", Storage.tokens.accessToken)
             }
 
-            // Sign-out flow successful. Redirect to sign-in view.
+            // Sign-out successful. Redirect to a sign-in view.
         } catch (e: Exception) {
-            // Sign-in flow failed, handle the error.
+            // Sign-out failed, handle the error.
         }
     }
 }

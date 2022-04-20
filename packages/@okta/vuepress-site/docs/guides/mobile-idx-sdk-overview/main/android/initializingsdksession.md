@@ -11,14 +11,14 @@ private fun createClient() {
         // Initialize the SDK client and start sign-in flow.
         when (val clientResult = IdxClient.start(OktaIdxClientConfigurationProvider.get())) {
             is IdxClientResult.Error -> {
-                // Handle error.
+                // Handle the error.
             }
             is IdxClientResult.Success -> {
                 client = clientResult.result
                 // Request the first response by calling resume and handle the asynchronous response.
                 when (val resumeResult = clientResult.result.resume()) {
                     is IdxClientResult.Error -> {
-                        // Handle error.
+                        // Handle the error.
                     }
                     is IdxClientResult.Success -> handleResponse(resumeResult.result)
                 }
